@@ -23,5 +23,8 @@ module RailsAzurePoc
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Allow Tailwind CSS build output to be served as "tailwind" asset
+    config.assets.paths << Rails.root.join("app/assets/builds")
   end
 end

@@ -1,4 +1,16 @@
-<h1>Edit product</h1>
+<div class="max-w-2xl mx-auto py-12 px-4 sm:px-6">
+  <div class="mb-8">
+    <%= link_to @product, class: "inline-flex items-center text-sm font-medium text-stone-500 hover:text-teal-600 transition-colors mb-6" do %>
+      <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Cancel
+    <% end %>
+    <h1 class="text-3xl font-semibold text-stone-900 tracking-tight">Edit product</h1>
+    <p class="mt-1 text-stone-500">Update "<%= @product.name %>".</p>
+  </div>
 
-<%= render "form", product: @product %>
-<%= link_to "Cancel", @product %>
+  <div class="bg-white rounded-xl shadow-sm border border-stone-200/80 p-6 sm:p-8">
+    <%= render "form", product: @product %>
+  </div>
+</div>

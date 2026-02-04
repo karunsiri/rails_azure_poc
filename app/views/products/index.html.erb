@@ -1,11 +1,39 @@
-<h1>Products</h1>
+<div class="max-w-4xl mx-auto py-12 px-4 sm:px-6">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
+    <h1 class="text-3xl font-semibold text-stone-900 tracking-tight">Products</h1>
+    <%= link_to new_product_path, class: "inline-flex items-center justify-center rounded-lg bg-teal-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-colors" do %>
+      <svg class="-ml-0.5 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      New product
+    <% end %>
+  </div>
 
-<%= link_to "New product", new_product_path %>
-
-<div id="products">
-  <% @products.each do |product| %>
-    <div>
-      <%= link_to product.name, product_path(product) %>
-    </div>
-  <% end %>
+  <div id="products" class="bg-white rounded-xl shadow-sm border border-stone-200/80 overflow-hidden">
+    <% if @products.any? %>
+      <ul class="divide-y divide-stone-100">
+        <% @products.each do |product| %>
+          <li>
+            <%= link_to product_path(product), class: "block px-6 py-4 hover:bg-stone-50/80 transition-colors group" do %>
+              <div class="flex items-center justify-between">
+                <span class="text-stone-900 font-medium group-hover:text-teal-600 transition-colors"><%= product.name %></span>
+                <svg class="h-5 w-5 text-stone-400 group-hover:text-teal-500 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="px-6 py-16 text-center">
+        <svg class="mx-auto h-12 w-12 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8 4-8-4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+        <p class="mt-4 text-stone-500">No products yet.</p>
+        <p class="mt-1 text-sm text-stone-400">Get started by creating your first product.</p>
+        <%= link_to "New product", new_product_path, class: "mt-6 inline-flex items-center rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-500 transition-colors" %>
+      </div>
+    <% end %>
+  </div>
 </div>
